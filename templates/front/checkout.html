@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Checkout | VoltEdge Electronics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/front/styles.css">
+</head>
+<body class="bg-soft">
+{% include 'front/share/navbar.html' %}
+
+<main>
+    <section class="checkout-hero">
+        <div class="container py-5">
+            <div class="row g-4 align-items-end">
+                <div class="col-lg-8">
+                    <p class="eyebrow text-gold">Secure checkout</p>
+                    <h1 class="display-4 fw-bold text-white mb-3">Complete your order with QR payment.</h1>
+                    <p class="lead text-white-50 mb-0">Add delivery details, review the order, and scan the QR code to
+                        pay.</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart-progress bg-white rounded-3 p-3">
+                        <div>Cart</div>
+                        <div class="active">Checkout</div>
+                        <div>Payment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <div class="checkout-card bg-white border rounded-3 p-4 mb-4">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <span class="step-number">1</span>
+                        <div>
+                            <p class="eyebrow mb-1">Delivery</p>
+                            <h2 class="h4 fw-bold mb-0">Shipping information</h2>
+                        </div>
+                    </div>
+
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="firstName">First name</label>
+                                <input class="form-control" id="firstName" type="text" placeholder="Alex">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="lastName">Last name</label>
+                                <input class="form-control" id="lastName" type="text" placeholder="Morgan">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="email">Email</label>
+                                <input class="form-control" id="email" type="email" placeholder="alex@example.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="phone">Phone</label>
+                                <input class="form-control" id="phone" type="tel" placeholder="+1 555 012 3456">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-bold" for="address">Address</label>
+                                <textarea class="form-control" id="address" rows="4"
+                                          placeholder="Street, city, state, postal code"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="checkout-card bg-white border rounded-3 p-4">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <span class="step-number">2</span>
+                        <div>
+                            <p class="eyebrow mb-1">Payment</p>
+                            <h2 class="h4 fw-bold mb-0">QR code payment</h2>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <div class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=VoltEdge%20Electronics%20payment%20total%20%241549"
+                                     alt="QR code payment">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="payment-detail">
+                                <span>Payment amount</span>
+                                <strong>$1,549</strong>
+                            </div>
+                            <div class="payment-detail">
+                                <span>Payment method</span>
+                                <strong>QR bank transfer</strong>
+                            </div>
+                            <div class="payment-detail">
+                                <span>Reference</span>
+                                <strong>VE-2026-1549</strong>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">Scan the QR code with your banking app, then use the button
+                                below as the template confirmation action.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="col-lg-5">
+                <div class="order-summary-card bg-white border rounded-3 p-4">
+                    <p class="eyebrow">Review</p>
+                    <h2 class="h4 fw-bold mb-4">Order summary</h2>
+
+                    <div class="checkout-item">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80"
+                             alt="Nova Ultrabook 14">
+                        <div>
+                            <h3 class="h6 fw-bold mb-1">Nova Ultrabook 14</h3>
+                            <p class="text-muted mb-0">Qty 1 · Aster</p>
+                        </div>
+                        <strong>$1,199</strong>
+                    </div>
+
+                    <div class="checkout-item">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80"
+                             alt="Pulse Pro Headphones">
+                        <div>
+                            <h3 class="h6 fw-bold mb-1">Pulse Pro Headphones</h3>
+                            <p class="text-muted mb-0">Qty 1 · SonicLab</p>
+                        </div>
+                        <strong>$249</strong>
+                    </div>
+
+                    <div class="summary-stack mt-4">
+                        <div class="summary-line"><span>Subtotal</span><strong>$1,448</strong></div>
+                        <div class="summary-line"><span>Shipping</span><strong>Free</strong></div>
+                        <div class="summary-line"><span>Estimated tax</span><strong>$101</strong></div>
+                        <div class="summary-line total"><span>Total</span><strong>$1,549</strong></div>
+                    </div>
+
+                    <a class="btn btn-teal btn-lg w-100 mt-4" href="account.html">Confirm order</a>
+                    <a class="btn btn-outline-secondary w-100 mt-2" href="/cart">Back to cart</a>
+
+                    <div class="secure-note mt-4">
+                        <strong>Protected checkout</strong>
+                        <span>This static template is ready to connect with a live payment provider.</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+</main>
+
+{% include 'front/share/footer.html' %}
+</body>
+</html>

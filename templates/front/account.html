@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Account | VoltEdge Electronics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/front/styles.css">
+</head>
+<body class="bg-soft">
+
+{% include 'front/share/navbar.html' %}
+
+<main>
+    <section class="account-hero">
+        <div class="container py-5">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-8">
+                    <p class="eyebrow text-gold">User account</p>
+                    <h1 class="display-4 fw-bold text-white mb-3">Manage your profile, orders, and checkout
+                        details.</h1>
+                    <p class="lead text-white-50 mb-0">Keep your delivery information ready and review recent
+                        electronics purchases.</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="account-hero-card">
+                        <div class="account-avatar">AM</div>
+                        <div>
+                            <h2 class="h5 text-white mb-1">Alex Morgan</h2>
+                            <p class="text-white-50 mb-0">Verified customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <div class="row g-4">
+            <aside class="col-lg-4">
+                <div class="account-sidebar bg-white border rounded-3 p-4">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="account-avatar">AM</div>
+                        <div>
+                            <h2 class="h4 fw-bold mb-1">Alex Morgan</h2>
+                            <p class="text-muted mb-0">alex@example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="account-menu">
+                        <a class="active" href="/account">Dashboard</a>
+                        <a href="/cart">Cart</a>
+                        <a href="/checkout">Checkout</a>
+                    </div>
+
+                    <div class="secure-note mt-4">
+                        <strong>Account status</strong>
+                        <span>Email verified and ready for QR checkout.</span>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="col-lg-8">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="account-stat bg-white border rounded-3 p-4">
+                            <span>Orders</span>
+                            <strong>6</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="account-stat bg-white border rounded-3 p-4">
+                            <span>Active</span>
+                            <strong>2</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="account-stat bg-white border rounded-3 p-4">
+                            <span>Saved</span>
+                            <strong>4</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border rounded-3 p-4 mb-4 account-panel">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                        <div>
+                            <p class="eyebrow mb-1">Orders</p>
+                            <h2 class="h4 fw-bold mb-0">Recent purchases</h2>
+                        </div>
+                        <a class="btn btn-outline-secondary" href="/products">Shop again</a>
+                    </div>
+
+                    <div class="order-card">
+                        <div>
+                            <strong>VE-2026-1549</strong>
+                            <span>Nova Ultrabook 14, Pulse Pro Headphones</span>
+                        </div>
+                        <div>
+                            <strong>$1,549</strong>
+                            <span>Processing</span>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div>
+                            <strong>VE-2026-1108</strong>
+                            <span>ViewMax 27 4K Monitor</span>
+                        </div>
+                        <div>
+                            <strong>$429</strong>
+                            <span>Delivered</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="bg-white border rounded-3 p-4 h-100 account-panel">
+                            <p class="eyebrow">Delivery</p>
+                            <h2 class="h4 fw-bold">Saved address</h2>
+                            <p class="text-muted mb-4">128 Market Street, San Francisco, CA 94105</p>
+                            <a class="btn btn-teal w-100" href="/checkout">Use at checkout</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="bg-white border rounded-3 p-4 h-100 account-panel">
+                            <p class="eyebrow">Security</p>
+                            <h2 class="h4 fw-bold">Password</h2>
+                            <p class="text-muted mb-4">Update your password or reset access from the login flow.</p>
+                            <a class="btn btn-outline-secondary w-100" href="/forgot-password">Reset password</a>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="bg-white border rounded-3 p-4 account-panel">
+                            <div class="d-flex align-items-center gap-3 mb-4">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <p class="eyebrow mb-1">Profile</p>
+                                    <h2 class="h4 fw-bold mb-0">Account details</h2>
+                                </div>
+                            </div>
+
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold" for="profileName">Full name</label>
+                                        <input class="form-control" id="profileName" type="text" value="Alex Morgan">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold" for="profileEmail">Email</label>
+                                        <input class="form-control" id="profileEmail" type="email"
+                                               value="alex@example.com">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold" for="profilePhone">Phone</label>
+                                        <input class="form-control" id="profilePhone" type="tel"
+                                               value="+1 555 012 3456">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold" for="profileStatus">Status</label>
+                                        <input class="form-control" id="profileStatus" type="text"
+                                               value="Verified customer">
+                                    </div>
+                                </div>
+                                <a class="btn btn-teal mt-4" href="account.html">Save profile</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% include 'front/share/footer.html' %}
+</body>
+</html>
