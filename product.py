@@ -240,3 +240,16 @@ products = [
         }
     }
 ]
+
+def get_product_by_title(title):
+    for product in products:
+        if (product['title']).strip() == title.strip():
+            return product
+    return None
+
+def get_product_by_category(category):
+    result = []
+    for product in products:
+        if (product['category']).strip() == category.strip():
+            result.append(product)
+    return result

@@ -1,22 +1,30 @@
 from flask import Flask, render_template
 import random
+from product import products as pro, get_product_by_category
 
 app = Flask(__name__)
 
 
 @app.get('/')
 def home():
-    return render_template('front/index.html')
+    return render_template('front/index.html', products=pro)
 
 
 @app.get('/products')
 def products():
-    return render_template('front/products.html')
+    return render_template('front/products.html', products=pro)
 
 
-@app.get('/product')
-def product():
-    return render_template('front/product.html')
+@app.get('/product/<product_name>')
+def product(product_name):
+    from product import get_product_by_title
+    product = get_product_by_title(product_name)
+    related_product = get_product_by_category(product['category'])
+    return render_template(
+        'front/product.html',
+        product = product,
+        related_product = related_product,
+    )
 
 
 @app.get('/cart')

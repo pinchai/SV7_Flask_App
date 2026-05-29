@@ -11,14 +11,13 @@
 
 {% include 'front/share/navbar.html' %}
 
-
 <main class="container py-5">
     <nav class="mb-4 small text-muted" aria-label="Breadcrumb">
-        <a class="link-teal fw-bold" href="index.html">Home</a>
+        <a class="link-teal fw-bold" href="/">Home</a>
         <span class="mx-2">/</span>
-        <a class="link-teal fw-bold" href="/products">Laptops</a>
+        <a class="link-teal fw-bold" href="/products">{{ product.category }}</a>
         <span class="mx-2">/</span>
-        <span>Nova Ultrabook 14</span>
+        <span>{{ product.title }}</span>
     </nav>
 
     <section class="product-showcase bg-white border rounded-3 p-3 p-lg-4 mb-5">
@@ -27,8 +26,10 @@
                 <div class="product-gallery">
                     <div class="product-badge">Best seller</div>
                     <img class="product-hero-image"
-                         src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80"
-                         alt="Nova Ultrabook 14">
+                         src="{{ product.image }}"
+                         alt="{{ product.image }}"
+                         style="object-fit: contain"
+                    >
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-4">
@@ -51,112 +52,23 @@
 
             <div class="col-lg-5">
                 <div class="purchase-panel h-100">
-                    <p class="eyebrow">Aster · Laptops</p>
-                    <h1 class="display-5 fw-bold mb-3">Nova Ultrabook 14</h1>
+                    <p class="eyebrow">{{ product.category }}</p>
+                    <h1 class="display-5 fw-bold mb-3">{{ product.title }}</h1>
                     <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
                         <span class="rating-pill">4.8 / 5</span>
                         <span class="text-muted">128 reviews</span>
                         <span class="stock-pill">In stock</span>
                     </div>
-                    <p class="text-muted">A lightweight aluminum laptop with an efficient processor, bright display, and
-                        all-day battery life for focused work anywhere.</p>
+                    <p class="text-muted">{{ product.description }}</p>
                     <div class="d-flex align-items-end gap-3 my-4">
-                        <p class="price fs-1 mb-0">$1,199</p>
+                        <p class="price fs-1 mb-0">$ {{ product.price }}</p>
                         <p class="text-muted text-decoration-line-through mb-2">$1,349</p>
                     </div>
-
-                    <div class="option-block mb-4">
-                        <p class="fw-bold mb-2">Color</p>
-                        <div class="d-flex gap-2">
-                            <span class="color-swatch bg-dark" title="Graphite"></span>
-                            <span class="color-swatch bg-secondary" title="Silver"></span>
-                            <span class="color-swatch bg-light border" title="Cloud"></span>
-                        </div>
-                    </div>
-
-                    <div class="option-block mb-4">
-                        <p class="fw-bold mb-2">Configuration</p>
-                        <div class="row g-2">
-                            <div class="col-6">
-                                <div class="config-card active">16GB / 1TB</div>
-                            </div>
-                            <div class="col-6">
-                                <div class="config-card">32GB / 1TB</div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="d-grid gap-2">
                         <a class="btn btn-teal btn-lg" href="/cart">Add to cart</a>
                         <a class="btn btn-outline-secondary btn-lg" href="/checkout">Buy now</a>
                     </div>
-
-                    <div class="trust-grid mt-4">
-                        <div>
-                            <strong>Free shipping</strong>
-                            <span>Orders over $500</span>
-                        </div>
-                        <div>
-                            <strong>2-year warranty</strong>
-                            <span>Parts and labor</span>
-                        </div>
-                        <div>
-                            <strong>QR checkout</strong>
-                            <span>Fast payment flow</span>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="row g-4 mb-5">
-        <div class="col-lg-7">
-            <div class="bg-white border rounded-3 p-4 h-100">
-                <p class="eyebrow">Product overview</p>
-                <h2 class="fw-bold mb-3">Designed for speed without the bulk.</h2>
-                <p class="text-muted mb-4">The Nova Ultrabook 14 keeps the essentials sharp: a bright high-resolution
-                    display, quiet performance, generous storage, and a rigid aluminum build that travels well between
-                    office, home, and study setups.</p>
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                        <div class="feature-tile">
-                            <strong>2.8K display</strong>
-                            <span>Crisp text, color-rich visuals, and slim bezels.</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="feature-tile">
-                            <strong>18-hour battery</strong>
-                            <span>Long runtime for travel and full workdays.</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="feature-tile">
-                            <strong>1TB SSD</strong>
-                            <span>Fast local storage for apps, media, and projects.</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="feature-tile">
-                            <strong>1.25 kg body</strong>
-                            <span>Portable aluminum chassis with a refined finish.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-5">
-            <div class="bg-white border rounded-3 p-4 h-100">
-                <p class="eyebrow">Specifications</p>
-                <h2 class="fw-bold mb-3">Technical details</h2>
-                <div class="spec-row"><span>Display</span><strong>14-inch 2.8K IPS</strong></div>
-                <div class="spec-row"><span>Memory</span><strong>16GB unified RAM</strong></div>
-                <div class="spec-row"><span>Storage</span><strong>1TB NVMe SSD</strong></div>
-                <div class="spec-row"><span>Ports</span><strong>USB-C, HDMI, audio</strong></div>
-                <div class="spec-row"><span>Battery</span><strong>Up to 18 hours</strong></div>
-                <div class="spec-row"><span>Weight</span><strong>1.25 kg</strong></div>
             </div>
         </div>
     </section>
@@ -165,47 +77,26 @@
         <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
             <div>
                 <p class="eyebrow">Related products</p>
-                <h2 class="fw-bold mb-0">Similar category or brand</h2>
+                <h2 class="fw-bold mb-0">Similar category</h2>
             </div>
             <a class="link-teal fw-bold" href="/products">All products</a>
         </div>
         <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <div class="card product-card h-100">
-                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80"
-                         class="card-img-top" alt="ViewMax monitor">
-                    <div class="card-body">
-                        <p class="product-meta">Aster · Accessories</p>
-                        <h3 class="h5">ViewMax 27 4K Monitor</h3>
-                        <p class="price">$429</p>
-                        <a class="btn btn-teal w-100" href="/product">View product</a>
+            {% for product in related_product %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card h-100">
+                        <img src="{{ product.image }}"
+                             style="object-fit: contain; height: 200px"
+                             class="card-img-top" alt="{{ product.title }}">
+                        <div class="card-body">
+                            <p class="product-meta">{{ product.category }}</p>
+                            <h3 class="h5">{{ product.title }}</h3>
+                            <p class="price">${{ product.price }}</p>
+                            <a class="btn btn-teal w-100" href="/product/{{ product.title }}">View product</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card product-card h-100">
-                    <img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=900&q=80"
-                         class="card-img-top" alt="DockHub USB-C">
-                    <div class="card-body">
-                        <p class="product-meta">Portix · Accessories</p>
-                        <h3 class="h5">DockHub 12-in-1 USB-C</h3>
-                        <p class="price">$129</p>
-                        <a class="btn btn-teal w-100" href="/product">View product</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card product-card h-100">
-                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=80"
-                         class="card-img-top" alt="Tablet">
-                    <div class="card-body">
-                        <p class="product-meta">Zenith · Tablets</p>
-                        <h3 class="h5">TabLite Air</h3>
-                        <p class="price">$549</p>
-                        <a class="btn btn-teal w-100" href="/product">View product</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 </main>
