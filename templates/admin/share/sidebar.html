@@ -1,0 +1,72 @@
+<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+    <div class="sidebar-brand">
+        <a href="./index.html" class="brand-link">
+            <img
+                    src="{{ url_for('static', filename='admin/image/logo.png') }}"
+                    alt="AdminLTE Logo"
+                    class="brand-image opacity-75 shadow"
+            />
+            <span class="brand-text fw-light">AdminLTE 4</span>
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <nav class="mt-2">
+            <ul
+                    class="nav sidebar-menu flex-column"
+                    data-lte-toggle="treeview"
+                    role="navigation"
+                    aria-label="Main navigation"
+                    data-accordion="false"
+                    id="navigation"
+            >
+                {# dashboard #}
+                <li class="nav-item">
+                    <a href="{{ url_for('dashboard') }}" class="nav-link {{ 'active' if module == 'dashboard' else '' }}">
+                        <i class="nav-icon bi bi-house"></i>
+                        <p>dashboard</p>
+                    </a>
+                </li>
+
+                {# user #}
+                <li class="nav-item">
+                    <a href="{{ url_for('user') }}" class="nav-link {{ 'active' if module == 'user' else '' }}">
+                        <i class="nav-icon bi bi-person"></i>
+                        <p>User</p>
+                    </a>
+                </li>
+
+                {# product management #}
+                <li class="nav-item menu-open1">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-speedometer"></i>
+                        <p>
+                            Product Management
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="./index.html" class="nav-link active">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Brand</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index2.html" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index3.html" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Product</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>

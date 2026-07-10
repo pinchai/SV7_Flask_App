@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>SV7 Admin</title>
+    {% include 'admin/share/header_style.html' %}
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+<div class="app-wrapper">
+    {% include 'admin/share/navbar.html' %}
+    {% include 'admin/share/sidebar.html' %}
+
+    <!--begin::App Main-->
+    {% block content %}
+    	
+    {% endblock %}
+
+    {% include 'admin/share/footer.html' %}
+</div>
+{% include 'admin/share/footer_script.html' %}
+</body>
+</html>

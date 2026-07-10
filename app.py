@@ -22,8 +22,8 @@ def product(product_name):
     related_product = get_product_by_category(product['category'])
     return render_template(
         'front/product.html',
-        product = product,
-        related_product = related_product,
+        product=product,
+        related_product=related_product,
     )
 
 
@@ -57,20 +57,34 @@ def checkout():
     return render_template('front/checkout.html')
 
 
-@app.get('/test_template')
-def test_template():
-    from product import products
-    for item in products:
-        item['qty'] = random.randint(1, 100)
-        item['discount_pct'] = random.randint(0, 100)
-        item['name'] = item['title'][:20]
+@app.get('/admin/dashboard')
+def dashboard():
+    module = 'dashboard'
+    return render_template('admin/dashboard/index.html', module=module)
 
-    # assert False, products[0]
 
+@app.get('/admin/user')
+def user():
+    module = 'user'
+    users = [
+        {
+            'id': 1,
+            'username': 'admin',
+            'email': 'admin@localhost.com',
+            'role': 'admin',
+        }
+    ]
     return render_template(
-        'test_template.html',
-        products=products,
+        'admin/user/index.html',
+        module=module,
+        users=users,
     )
+
+
+@app.get('/admin/user/add')
+def add_user():
+    module = 'user'
+    return render_template('admin/user/add.html', module=module)
 
 
 if __name__ == '__main__':
