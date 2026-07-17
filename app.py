@@ -69,6 +69,7 @@ def user():
     users = [
         {
             'id': 1,
+            'image': 'user.jpg',
             'username': 'admin',
             'email': 'admin@localhost.com',
             'role': 'admin',
@@ -85,6 +86,18 @@ def user():
 def add_user():
     module = 'user'
     return render_template('admin/user/add.html', module=module)
+
+
+@app.get('/admin/user/edit/<int:user_id>')
+def edit_user(user_id):
+    module = 'user'
+    return render_template('admin/user/edit.html', module=module, user_id=user_id)
+
+
+@app.get('/admin/user/confirm-delete/<int:user_id>')
+def confirm_delete(user_id):
+    module = 'user'
+    return render_template('admin/user/confirm_delete.html', module=module, user_id=user_id)
 
 
 if __name__ == '__main__':
