@@ -6,15 +6,16 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.14 (SV7)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.14 (SV7_Flask_App)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/../SV7\templates" />
+        <option value="$USER_HOME$/SV7\templates" />
       </list>
     </option>
   </component>
