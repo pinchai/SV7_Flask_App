@@ -1,10 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
 import random
 from product import products as pro, get_product_by_category
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
+from sqlalchemy import text
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mydb.sqlite3"
@@ -13,6 +13,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     profile = db.Column(db.String(80), nullable=True)
@@ -20,6 +21,7 @@ class User(db.Model):
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(120), nullable=False)
     role = db.Column(db.String(120), nullable=False, default='admin')
+
 
 @app.get('/')
 def home():
@@ -82,19 +84,14 @@ def dashboard():
 @app.get('/admin/user')
 def user():
     module = 'user'
-    users = [
-        {
-            'id': 1,
-            'image': 'user.jpg',
-            'username': 'admin',
-            'email': 'admin@localhost.com',
-            'role': 'admin',
-        }
-    ]
+    sql = text("SELECT * FROM user")
+    result = db.session.execute(sql)
+    users = result.fetchall()
+    rows = [dict(row._mapping) for row in users]
     return render_template(
         'admin/user/index.html',
         module=module,
-        users=users,
+        rows=rows,
     )
 
 
@@ -113,7 +110,21 @@ def edit_user(user_id):
 @app.get('/admin/user/confirm-delete/<int:user_id>')
 def confirm_delete(user_id):
     module = 'user'
-    return render_template('admin/user/confirm_delete.html', module=module, user_id=user_id)
+    sql = text("SELECT * FROM user where id = :user_id")
+    result = db.session.execute(sql, {"user_id": user_id})
+    user = dict(result.fetchone()._mapping)
+    return render_template('admin/user/confirm_delete.html', module=module, user=user)
+
+
+@app.post('/admin/user/delete')
+def delete_user():
+    module = 'user'
+    form = request.form
+    user_id = int(form.get('user_id'))
+    sql = text("DELETE FROM user WHERE id = :user_id")
+    db.session.execute(sql, {"user_id": user_id})
+    db.session.commit()
+    return redirect(url_for('user'))
 
 
 if __name__ == '__main__':
