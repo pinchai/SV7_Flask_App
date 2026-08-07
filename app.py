@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
-import random
+from werkzeug.security import generate_password_hash
+
 from product import products as pro, get_product_by_category
 
 from flask_sqlalchemy import SQLAlchemy
@@ -19,7 +20,7 @@ class User(db.Model):
     profile = db.Column(db.String(80), nullable=True)
     username = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
-    password = db.Column(db.String(120), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(120), nullable=False, default='admin')
 
 
@@ -100,12 +101,46 @@ def add_user():
     module = 'user'
     return render_template('admin/user/add.html', module=module)
 
+@app.post('/admin/user/add')
+def add():
+    form = request.form
+    user = User(
+        username=form.get('username'),
+        email=form.get('email'),
+        password=generate_password_hash(form.get('password')),
+        role=form.get('role'),
+    )
+    db.session.add(user)
+    db.session.commit()
+
+    return redirect(url_for('user'))
 
 @app.get('/admin/user/edit/<int:user_id>')
 def edit_user(user_id):
     module = 'user'
-    return render_template('admin/user/edit.html', module=module, user_id=user_id)
+    sql = text("SELECT * FROM user where id = :user_id")
+    result = db.session.execute(sql, {"user_id": user_id})
+    user = dict(result.fetchone()._mapping)
 
+    return render_template(
+        'admin/user/edit.html',
+        module=module,
+        user=user
+    )
+
+@app.post('/admin/user/edit')
+def edit():
+    form = request.form
+    user = User.query.get(form.get('user_id'))
+
+    user.username = form.get('username')
+    user.email = form.get('email')
+    user.role = form.get('role')
+    if form.get('password'):
+        user.password = generate_password_hash(form.get('password'))
+    db.session.commit()
+
+    return redirect(url_for('user'))
 
 @app.get('/admin/user/confirm-delete/<int:user_id>')
 def confirm_delete(user_id):
