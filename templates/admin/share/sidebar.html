@@ -21,7 +21,7 @@
             >
                 {# dashboard #}
                 <li class="nav-item">
-                    <a href="{{ url_for('dashboard') }}" class="nav-link {{ 'active' if module == 'dashboard' else '' }}">
+                    <a href="{{ url_for('admin_bp.dashboard') }}" class="nav-link {{ 'active' if module == 'dashboard' else '' }}">
                         <i class="nav-icon bi bi-house"></i>
                         <p>dashboard</p>
                     </a>
@@ -29,7 +29,7 @@
 
                 {# user #}
                 <li class="nav-item">
-                    <a href="{{ url_for('user') }}" class="nav-link {{ 'active' if module == 'user' else '' }}">
+                    <a href="{{ url_for('admin_bp.user') }}" class="nav-link {{ 'active' if module == 'user' else '' }}">
                         <i class="nav-icon bi bi-person"></i>
                         <p>User</p>
                     </a>
