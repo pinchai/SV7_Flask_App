@@ -12,6 +12,6 @@ def user():
     users = result.fetchall()
     rows = [dict(row._mapping) for row in users]
     return {
-        'status': 'success',
+        'message': 'success',
         'data': rows
-    }
+    }, 200
