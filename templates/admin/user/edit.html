@@ -38,11 +38,12 @@
                                 <form
                                         action="{{ url_for('admin_bp.edit') }}"
                                         method="POST"
+                                        enctype="multipart/form-data"
                                 >
                                     <input type="hidden" name="user_id" value="{{ user.id }}">
                                     <div class="form-group">
                                         <img
-                                                src="{{ url_for('static', filename='admin/image') }}/{{ user.profile }}"
+                                                src="{{ url_for('static', filename='images') }}/{{ user.profile }}"
                                                 alt="User Image"
                                                 id="image_preview"
                                                 style="width: 100px; height: 100px; object-fit: contain;"
@@ -94,7 +95,8 @@
                                         <label for="role">Role</label>
                                         <select class="form-control" id="role" name="role" required>
                                             <option value="user" {{ 'selected' if user.role == 'user' }}>User</option>
-                                            <option value="admin" {{ 'selected' if user.role == 'admin' }}>Admin</option>
+                                            <option value="admin" {{ 'selected' if user.role == 'admin' }}>Admin
+                                            </option>
                                         </select>
                                     </div>
                                     <hr>

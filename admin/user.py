@@ -1,3 +1,4 @@
+from models import User
 from . import admin_bp
 from flask import render_template
 
@@ -7,6 +8,8 @@ from werkzeug.security import generate_password_hash
 from extensions import db
 from sqlalchemy import text
 import models
+
+from helpers import upload_image, delete_image
 
 
 @admin_bp.get('/user')
@@ -32,11 +35,15 @@ def add_user():
 @admin_bp.post('/user/add')
 def add():
     form = request.form
+    file = request.files['image']
+    file_name = upload_image(file)
+
     user = models.User(
         username=form.get('username'),
         email=form.get('email'),
         password=generate_password_hash(form.get('password')),
         role=form.get('role'),
+        profile=file_name,
     )
     db.session.add(user)
     db.session.commit()
@@ -61,6 +68,8 @@ def edit_user(user_id):
 @admin_bp.post('/user/edit')
 def edit():
     form = request.form
+    file = request.files['image']
+
     user = models.User.query.get(form.get('user_id'))
 
     user.username = form.get('username')
@@ -68,6 +77,10 @@ def edit():
     user.role = form.get('role')
     if form.get('password'):
         user.password = generate_password_hash(form.get('password'))
+
+    if file.filename != '':
+        user.profile = upload_image(file=file, old_name=user.profile)
+
     db.session.commit()
 
     return redirect(url_for('admin_bp.user'))
@@ -87,7 +100,12 @@ def delete_user():
     module = 'user'
     form = request.form
     user_id = int(form.get('user_id'))
-    sql = text("DELETE FROM user WHERE id = :user_id")
-    db.session.execute(sql, {"user_id": user_id})
+    user = User.query.get(user_id)
+    if user.profile is not None:
+        delete_image(user.profile)
+    db.session.delete(user)
     db.session.commit()
+
+    db.session.commit()
+
     return redirect(url_for('admin_bp.user'))

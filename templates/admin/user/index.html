@@ -50,7 +50,7 @@
                                             <td>{{ user.id }}</td>
                                             <td>
                                                 <img
-                                                        src="{{ url_for('static', filename='admin/image/' ~ user.image) }}"
+                                                        src="{{ url_for('static', filename='images/' ~ user.profile) }}"
                                                         alt="{{ user.username }}"
                                                         style="width: 50px; height: 50px; object-fit: contain; border-radius: 50%;"
                                                         onerror="this.src='{{ url_for('static', filename='admin/image/no_image.png') }}';"
