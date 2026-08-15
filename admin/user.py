@@ -79,8 +79,10 @@ def edit():
         user.password = generate_password_hash(form.get('password'))
 
     if file.filename != '':
-        user.profile = upload_image(file=file, old_name=user.profile)
-
+        if user.profile is not None:
+            user.profile = upload_image(file=file, old_name=user.profile)
+        else:
+            user.profile = upload_image(file=file)
     db.session.commit()
 
     return redirect(url_for('admin_bp.user'))
