@@ -66,22 +66,22 @@
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <img
-                            src="{{ url_for('static', filename='admin/image/user.jpg') }}"
+                            src="{{ url_for('static', filename='images') }}/{{ session.get('profile') }}"
                             class="user-image rounded-circle shadow"
                             alt="User Image"
                     />
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
+                    <span class="d-none d-md-inline">{{ session.get('username') }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <!--begin::User Image-->
                     <li class="user-header text-bg-primary">
                         <img
-                                src="{{ url_for('static', filename='admin/image/user.jpg') }}"
+                                src="{{ url_for('static', filename='images') }}/{{ session.get('profile') }}"
                                 class="rounded-circle shadow"
                                 alt="User Image"
                         />
                         <p>
-                            Alexander Pierce - Web Developer
+                            {{ session.get('username') }} - {{ session.get('role') }}
                             <small>Member since Nov. 2023</small>
                         </p>
                     </li>
@@ -106,7 +106,8 @@
                     <!--begin::Menu Footer-->
                     <li class="user-footer">
                         <a href="#" class="btn btn-outline-secondary">Profile</a>
-                        <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                        <a href="{{ url_for('admin_bp.admin_logout') }}" class="btn btn-outline-danger float-end">Sign
+                            out</a>
                     </li>
                     <!--end::Menu Footer-->
                 </ul>

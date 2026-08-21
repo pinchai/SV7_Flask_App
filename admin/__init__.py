@@ -5,3 +5,4 @@ admin_bp = Blueprint('admin_bp', __name__,
 
 from . import dashboard
 from . import user
+from . import auth

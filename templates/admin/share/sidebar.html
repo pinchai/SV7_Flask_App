@@ -21,19 +21,24 @@
             >
                 {# dashboard #}
                 <li class="nav-item">
-                    <a href="{{ url_for('admin_bp.dashboard') }}" class="nav-link {{ 'active' if module == 'dashboard' else '' }}">
+                    <a href="{{ url_for('admin_bp.dashboard') }}"
+                       class="nav-link {{ 'active' if module == 'dashboard' else '' }}">
                         <i class="nav-icon bi bi-house"></i>
                         <p>dashboard</p>
                     </a>
                 </li>
 
                 {# user #}
-                <li class="nav-item">
-                    <a href="{{ url_for('admin_bp.user') }}" class="nav-link {{ 'active' if module == 'user' else '' }}">
-                        <i class="nav-icon bi bi-person"></i>
-                        <p>User</p>
-                    </a>
-                </li>
+                {% if session.get('role') == 'admin' %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('admin_bp.user') }}"
+                           class="nav-link {{ 'active' if module == 'user' else '' }}">
+                            <i class="nav-icon bi bi-person"></i>
+                            <p>User</p>
+                        </a>
+                    </li>
+                {% endif %}
+
 
                 {# product management #}
                 <li class="nav-item menu-open1">
